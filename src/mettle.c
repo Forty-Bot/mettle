@@ -17,6 +17,19 @@ int main(int argc, char **argv) {
 		exit(EXIT_FAILURE);
 	}
 
+	//Load the hero sprite
+	sfTexture* texture;
+	if(!(texture = sfTexture_createFromFile("data/hero.png", NULL))) {
+		printf("Unable to load data/hero.png");
+		exit(EXIT_FAILURE);
+	}
+	sfSprite* sprite;
+	if(!(sprite = sfSprite_create())) {
+		printf("Unable to create sprite");
+		exit(EXIT_FAILURE);
+	}
+	sfSprite_setTexture(sprite, texture, sfTrue);
+
 	//Event holder
 	sfEvent event;
 
@@ -29,8 +42,13 @@ int main(int argc, char **argv) {
 				default: break;
 			}
 		}
+
 		//Clear the screen and render
 		sfRenderWindow_clear(window, sfBlack);
+
+		//Draw the hero
+		sfRenderWindow_drawSprite(window, sprite, NULL);
+
 		sfRenderWindow_display(window);
 	}
 

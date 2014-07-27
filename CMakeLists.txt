@@ -3,3 +3,4 @@ project(mettle)
 
 #Include the src tree
 add_subdirectory(src)
+add_subdirectory(data)
