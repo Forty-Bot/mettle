@@ -1,1 +1,1 @@
-configure_file(hero.png ${CMAKE_CURRENT_BINARY_DIR}/hero.png COPYONLY)
+add_subdirectory(img)

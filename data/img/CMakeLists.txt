@@ -1,0 +1,6 @@
+file(GLOB files RELATIVE "${CMAKE_CURRENT_SOURCE_DIR}" "${CMAKE_CURRENT_SOURCE_DIR}/*.png")
+#message(${files})
+foreach(file ${files})
+	#message(${file})
+	configure_file(${file} ${CMAKE_CURRENT_BINARY_DIR}/${file} COPYONLY)
+endforeach()

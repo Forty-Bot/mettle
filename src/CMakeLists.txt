@@ -19,3 +19,8 @@ if(CSFML_FOUND)
   include_directories(${CSFML_INCLUDE_DIR})
   target_link_libraries(${executable_name} ${CSFML_LIBRARIES})
 endif()
+
+#Link to math.h
+if(UNIX)
+  target_link_libraries(${executable_name} m)
+endif(UNIX)
