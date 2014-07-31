@@ -1,0 +1,118 @@
+{
+   ioctl
+   Memcheck:Param
+   ioctl(generic)
+   ...
+   fun:CreateContext
+   fun:glXCreateContext
+}
+{
+   ioctl2
+   Memcheck:Param
+   ioctl(generic)
+   fun:ioctl
+   fun:drmIoctl
+}
+{
+   glcontext
+   Memcheck:Addr4
+   ...
+   fun:CreateContext
+   fun:glXCreateContext
+}
+{
+   brw1
+   Memcheck:Addr1
+   ...
+   fun:brw_clear
+   fun:sfRenderWindow_clear
+   fun:main
+}
+{
+   brw2
+   Memcheck:Addr2
+   ...
+   fun:brw_clear
+   fun:sfRenderWindow_clear
+   fun:main
+}
+{
+   brw4
+   Memcheck:Addr4
+   ...
+   fun:brw_clear
+   fun:sfRenderWindow_clear
+   fun:main
+}
+{
+   brw8
+   Memcheck:Addr8
+   ...
+   fun:brw_clear
+   fun:sfRenderWindow_clear
+   fun:main
+}
+{
+   render1
+   Memcheck:Addr1
+   ...
+   fun:vbo_draw_arrays
+   ...
+   fun:sfRenderWindow_drawSprite
+   fun:main
+}
+{
+   render2
+   Memcheck:Addr2
+   ...
+   fun:vbo_draw_arrays
+   ...
+   fun:sfRenderWindow_drawSprite
+   fun:main
+}
+{
+   render4
+   Memcheck:Addr4
+   ...
+   fun:vbo_draw_arrays
+   ...
+   fun:sfRenderWindow_drawSprite
+   fun:main
+}
+{
+   render8
+   Memcheck:Addr8
+   ...
+   fun:vbo_draw_arrays
+   ...
+   fun:sfRenderWindow_drawSprite
+   fun:main
+}
+{
+   display1
+   Memcheck:Addr1
+   ...
+   fun:sfRenderWindow_display
+   fun:main
+}
+{
+   display2
+   Memcheck:Addr2
+   ...
+   fun:sfRenderWindow_display
+   fun:main
+}
+{
+   display4
+   Memcheck:Addr4
+   ...
+   fun:sfRenderWindow_display
+   fun:main
+}
+{
+   display8
+   Memcheck:Addr8
+   ...
+   fun:sfRenderWindow_display
+   fun:main
+}
