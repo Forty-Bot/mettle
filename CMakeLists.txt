@@ -16,8 +16,8 @@
 cmake_minimum_required(VERSION 2.6 FATAL_ERROR)
 
 #Enable debug target by default
-if(cmake_build_type STREQUAL "")
-	set(cmake_build_type debug)
+if(NOT CMAKE_BUILD_TYPE)
+	set(CMAKE_BUILD_TYPE "debug")
 endif()
 
 project(mettle)

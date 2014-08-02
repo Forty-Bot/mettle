@@ -24,8 +24,8 @@
 #include <string.h>
 
 //For debugging, we can fill allocated memory with 0xFF
-#undef DEBUG
 #ifdef DEBUG
+#pragma message ( "DEBUG flag set" )
 void *lmalloc(size_t size) {
 	static const unsigned char fill = 0xFF;
 	void *ptr = malloc(size);
@@ -139,6 +139,8 @@ entity *entity_createPlayer(const sfVector2i, const playerAction *, const sfText
 //Move reletive to the current position (no pathfinding)
 void entity_move(entity *, const sfVector2i);
 void entity_del(entity *);
+
+sfSprite *createSprite(const sfTexture *, const sfVector2i);
 
 ////////////////////////////////////////////////////////////////////////
 // actionQueue

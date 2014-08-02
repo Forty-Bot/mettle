@@ -40,3 +40,7 @@ if(CSFML_FOUND)
   include_directories(${CSFML_INCLUDE_DIR})
   target_link_libraries(${executable_name} ${CSFML_LIBRARIES})
 endif()
+
+if(CMAKE_BUILD_TYPE STREQUAL "debug")
+  add_definitions(-DDEBUG)
+endif()

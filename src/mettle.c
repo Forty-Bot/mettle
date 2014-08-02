@@ -124,6 +124,12 @@ int main(int argc, char **argv) {
 		displayComp_draw(hero->display, window);
 
 		sfRenderWindow_display(window);
+
+		#ifdef DEBUG
+		sfVector2f pos = sfSprite_getPosition(hero->display->sprite);
+		printf("\rPlayer at %d,%d (%f.0px, %f.0px)", hero->x, hero->y, pos.x, pos.y);
+		fflush(stdout);
+		#endif
 	}
 
 	//Cleanup
@@ -304,6 +310,17 @@ entity *entity_createPlayer(const sfVector2i coord, const playerAction *action, 
 	this->ai = aiComp_createInput(this, action);
 
 	//Allocate the sprite
+	sfSprite *sprite = createSprite(texture, (sfVector2i) {PLAYER_TEXTURE_X, PLAYER_TEXTURE_Y});
+	this->display = displayComp_create(this, sprite);
+	sfSprite_destroy(sprite);
+
+	return this;
+
+}
+
+sfSprite *createSprite(const sfTexture *texture, const sfVector2i pos) {
+
+	//Allocate the sprite
 	sfSprite *sprite = NULL;
 	if(!(sprite = sfSprite_create())) {
 		printf("Could not create sprite");
@@ -311,11 +328,10 @@ entity *entity_createPlayer(const sfVector2i coord, const playerAction *action, 
 	}
 	//Set the texture
 	sfSprite_setTexture(sprite, texture, sfFalse);
-	sfSprite_setTextureRect(sprite, XY_TO_RECT(PLAYER_TEXTURE_X, PLAYER_TEXTURE_Y, SPRITE_SIZE, SPRITE_SIZE));
-	this->display = displayComp_create(this, sprite);
-	sfSprite_destroy(sprite);
-
-	return this;
+	sfSprite_setTextureRect(sprite, TILE_TO_RECT(pos, ((sfVector2i) {SPRITE_SIZE, SPRITE_SIZE})));
+	//Put the sprite in the right position
+	sfSprite_setOrigin(sprite, (sfVector2f) {(SPRITE_SIZE/4), (SPRITE_SIZE/2)});
+	return sprite;
 
 }
 
